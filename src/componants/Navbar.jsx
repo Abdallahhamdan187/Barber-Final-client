@@ -1,29 +1,28 @@
 import { Link, useLocation } from "react-router-dom";
-import { Scissors, LogOut, } from "lucide-react";
+import { Scissors, User, LogOut, } from "lucide-react";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useEffect, useState } from "react";
-
 function Navbar({ isAuthenticated, isAdmin, onLogout }) {
     const location = useLocation();
     const isLandingPage = location.pathname === "/";
 
     const [weatherData, setWeatherData] = useState(null);
     const myApi = import.meta.env.VITE_WEATHER_API_KEY;
-    const baseUrl = `https://api.weatherapi.com/v1/current.json?key=${myApi}&q=Amman&aqi=no`;
+    const baseurl = `https://api.weatherapi.com/v1/current.json?key=${myApi}&q=Amman&aqi=no`;
     useEffect(() => {
         const fetchWeather = async () => {
             try {
-                const response = await fetch(baseUrl);
+                const response = await fetch(baseurl);
                 const data = await response.json();
 
                 setWeatherData(data);
-              
+                console.log("API KEY:", myApi);
             } catch (error) {
                 console.error("Error fetching weather data:", error);
             }
         }
         fetchWeather();
-    }, [baseUrl]);
+    }, [baseurl]);
 
 
     return (
@@ -46,8 +45,13 @@ function Navbar({ isAuthenticated, isAdmin, onLogout }) {
                                         </div>
                                         <span className="text-xl font-semibold text-gray-900">
                                             7LE8HA
+
                                         </span>
+
+
                                     </Link>
+
+
                                 </>
                             )}
                             {isAdmin && (
@@ -65,6 +69,11 @@ function Navbar({ isAuthenticated, isAdmin, onLogout }) {
                             )}
                         </div>
                     )}
+
+
+
+
+
                     {isLandingPage ? null : (
                         <>
                             {isAuthenticated && (
