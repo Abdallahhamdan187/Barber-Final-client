@@ -1,17 +1,17 @@
 import { useMemo, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import AdminAppointments from "./componants/AdminAppointments";
-import AdminDashboard from "./componants/AdminDashboard";
-import LandingPage from "./componants/LandingPage";
-import AuthPage from "./componants/AuthPage";
-import UserDashboard from "./componants/UserDashboard";
-import UserAppointments from "./componants/UserAppointments";
-import BookAppointment from "./componants/BookAppointment";
-import Navbar from "./componants/Navbar";
-import AdminServices from "./componants/AdminServices";
-import AdminBarbers from "./componants/AdminBarbers";
-import AdminUsers from "./componants/AdminUsers";
-import Footer from "./componants/Footer";
+import AdminAppointments from "./components/AdminAppointments";
+import AdminDashboard from "./components/AdminDashboard";
+import LandingPage from "./components/LandingPage";
+import AuthPage from "./components/AuthPage";
+import UserDashboard from "./components/UserDashboard";
+import UserAppointments from "./components/UserAppointments";
+import BookAppointment from "./components/BookAppointment";
+import Navbar from "./components/Navbar";
+import AdminServices from "./components/AdminServices";
+import AdminBarbers from "./components/AdminBarbers";
+import AdminUsers from "./components/AdminUsers";
+import Footer from "./components/Footer";
 
 function RequireAuth({ allowed, redirectTo = "/login", children }) {
   return allowed ? children : <Navigate to={redirectTo} replace />;
