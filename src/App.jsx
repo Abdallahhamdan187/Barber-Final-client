@@ -10,7 +10,7 @@ import BookAppointment from "./componants/BookAppointment";
 import Navbar from "./componants/Navbar";
 import AdminServices from "./componants/AdminServices";
 import AdminBarbers from "./componants/AdminBarbers";
-import AdminUsers from "./componants/AdminUsers";
+import AdminUsers from "./componants/AdminUsers.jsx";
 import Footer from "./componants/Footer";
 
 function RequireAuth({ allowed, redirectTo = "/login", children }) {
@@ -86,7 +86,6 @@ function App() {
             </RequireAuth>
           }
         />
-        {/* <Route path="/book" element={<BookAppointment userId={userId} />} /> */}
 
         <Route
           path="/appointments"
@@ -96,7 +95,6 @@ function App() {
             </RequireAuth>
           }
         />
-        {/* <Route path="/appointments" element={<UserAppointments userId={userId} />} /> */}
 
 
         <Route
