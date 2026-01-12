@@ -62,7 +62,7 @@ npm install
 npm run dev
 ```
 
-## Project Structure 
+## Project Structure
 ```bash
 src/
  ├── componants/
