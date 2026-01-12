@@ -10,7 +10,7 @@ import BookAppointment from "./componants/BookAppointment";
 import Navbar from "./componants/Navbar";
 import AdminServices from "./componants/AdminServices";
 import AdminBarbers from "./componants/AdminBarbers";
-import AdminUsers from "./componants/AdminUsers.jsx";
+import AdminUsers from "./componants/AdminUsers";
 import Footer from "./componants/Footer";
 
 function RequireAuth({ allowed, redirectTo = "/login", children }) {
