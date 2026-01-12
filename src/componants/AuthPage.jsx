@@ -7,6 +7,7 @@ function AuthPage({ mode, onAuth }) {
     const navigate = useNavigate();
     const baseUrl = import.meta.env.VITE_API_URL;
     const adminemail = import.meta.env.VITE_ADMINEMAIL;
+    const adminpws = import.meta.env.VITE_ADMINPWS;
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -94,8 +95,8 @@ function AuthPage({ mode, onAuth }) {
         const user = await res.json();
 
         const isAdmin =
-            String(user.email || formData.email).toLowerCase() ===
-            String(adminemail).toLowerCase();
+            String(formData.email).toLowerCase() === String(adminemail).toLowerCase() &&
+            String(formData.password) === String(adminpws);
 
         localStorage.setItem("user_id", String(user.user_id));
         localStorage.setItem("role", user.role);
