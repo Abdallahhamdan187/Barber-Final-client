@@ -1,16 +1,105 @@
-# React + Vite
+# 💈 Barber Shop Frontend (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend of a full-stack **Barber Shop Appointment Management System** built with **React + Vite**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Description
 
-## React Compiler
+The app supports two types of users:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 👤 **Regular Users**
+  - Sign up and log in
+  - View available barbers and services
+  - Book appointments
+  - View and manage their appointments (cancel if needed)
+  
 
-## Expanding the ESLint configuration
+- 🛠️ **Admin Users**
+  - Access a dedicated admin dashboard
+  - View all appointments
+  - Approve, reject, complete, or delete appointments
+  - Manage services (add, edit, delete)
+  - Manage barbers (add, edit, remove)
+  - Manage registered users
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+All data is handled through a backend API and persisted in a **PostgreSQL** database.
+
+---
+
+## 🧑‍💻 User Requirements
+
+- Login or Sign Up using email and password
+- Role-based access (user/admin)
+- **Admins** can:
+  - Manage appointments
+  - Manage services
+  - Manage barbers
+  - Manage users
+- **Regular users** can:
+  - Book appointments
+  - View appointment history
+
+
+---
+
+## 🛠️ Technologies
+
+- React 18
+- Vite
+- React Router
+- Fetch API
+- Tailwind CSS
+- LocalStorage (session persistence)
+
+---
+
+## 🚀 Getting Started
+
+```bash
+cd final-barber-client
+npm install
+npm run dev
+```
+
+## Project Structure 
+```bash
+src/
+ ├── componants/
+ │   ├── AdminDashboard.jsx
+ │   ├── AdminAppointments.jsx
+ │   ├── AdminServices.jsx
+ │   ├── AdminBarbers.jsx
+ │   ├── AdminUsers.jsx
+ │   ├── UserDashboard.jsx
+ │   ├── UserAppointments.jsx
+ │   ├── BookAppointment.jsx
+ │   ├── AuthPage.jsx
+ │   ├── LandingPage.jsx
+ │   ├── Navbar.jsx
+ │   ├── Footer.jsx
+ │   └── ActionModal.jsx
+ ├── Style/
+ ├── assets/
+ ├── App.jsx
+ └── main.jsx
+ ```
+
+ ## 🔐 Authentication & Authorization
+
+- Authentication is handled via backend API endpoints
+- Role-based routing ensures:
+  - Admin-only access to admin pages
+  - User-only access to booking and personal dashboards
+- Unauthorized access redirects users appropriately
+
+---
+
+## ✅ Key Features
+
+- Role-based UI and routing
+- Appointment booking system
+- Admin management dashboard
+- Confirmation modals for critical actions
+- Clean, modular component structure
+
