@@ -17,7 +17,7 @@ function Navbar({ isAuthenticated, isAdmin, onLogout }) {
                 const data = await response.json();
 
                 setWeatherData(data);
-              
+
             } catch (error) {
                 console.error("Error fetching weather data:", error);
             }
