@@ -139,10 +139,6 @@ function AdminUsers() {
                             setUsersList((prev) => prev.filter((u) => getUserId(u) !== id));
                             showInfo({ title: "Deleted", message: "User deleted successfully." });
                         })
-                        .catch((err) => {
-                            console.error("Delete user error:", err);
-                            showInfo({ title: "Error", message: "Failed to delete user." });
-                        });
                 } catch (error) {
                     console.error("Delete user error:", error);
                     showInfo({ title: "Error", message: "Failed to delete user." });

@@ -101,7 +101,6 @@ function AdminBarbers() {
 
     useEffect(() => {
         fetchBarbers();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [baseUrl]);
 
     const startEdit = (b) => {

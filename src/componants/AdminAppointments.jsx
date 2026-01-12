@@ -89,7 +89,9 @@ function AdminAppointments() {
                         apt.appointment_id === id ? { ...apt, status: "Approved" } : apt
                     )
                 );
-            })
+            }).catch((err) => {
+                console.error("Error approving appointment:", err);
+            });
 
     };
 
@@ -114,7 +116,9 @@ function AdminAppointments() {
                                 apt.appointment_id === id ? { ...apt, status: "Rejected" } : apt
                             )
                         );
-                    })
+                    }).catch((err) => {
+                        console.error("Error rejecting appointment:", err);
+                    });
             },
         });
     };
@@ -154,6 +158,9 @@ function AdminAppointments() {
                             prev.filter((apt) => apt.appointment_id !== id)
                         );
                     })
+                    .catch((err) => {
+                        console.error("Error deleting appointment:", err);
+                    });
             },
         });
     };
