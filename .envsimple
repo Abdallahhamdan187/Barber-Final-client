@@ -1,0 +1,4 @@
+VITE_WEATHER_API_KEY= api weather key
+VITE_ADMINEMAIL=admin@barber.com
+VITE_ADMINPWS=admin123
+VITE_API_URL= server-url
