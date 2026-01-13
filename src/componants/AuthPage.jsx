@@ -17,6 +17,7 @@ function AuthPage({ mode, onAuth }) {
         password: "",
     });
 
+
     const [errors, setErrors] = useState({});
 
     const [modal, setModal] = useState({
