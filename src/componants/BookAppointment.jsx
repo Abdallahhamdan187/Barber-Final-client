@@ -21,8 +21,8 @@ function BookAppointment() {
     const [selectedService, setSelectedService] = useState("");
     const [selectedBarber, setSelectedBarber] = useState("");
 
-    const [selectedDate, setSelectedDate] = useState("");//no double appointment on same date
-    const [selectedTime, setSelectedTime] = useState("");//no double appointment on same time
+    const [selectedDate, setSelectedDate] = useState("");
+    const [selectedTime, setSelectedTime] = useState("");
 
     useEffect(() => {
         // Fetch services
