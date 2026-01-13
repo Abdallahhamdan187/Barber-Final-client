@@ -10,6 +10,7 @@ function UserAppointments() {
     const userId = localStorage.getItem("user_id")
 
 
+
     const baseUrl = import.meta.env.VITE_API_URL;
     const [modal, setModal] = useState({
         open: false,
