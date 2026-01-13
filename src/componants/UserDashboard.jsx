@@ -210,7 +210,6 @@ function UserDashboard({ }) {
                         )}
                     </div>
                 </div>
-
                 <div className="bg-card rounded-xl shadow-sm border border-border">
                     <div className="p-6 border-b border-border flex justify-between items-center">
                         <h2 className="text-foreground">Past Appointments</h2>
