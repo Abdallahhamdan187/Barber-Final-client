@@ -11,7 +11,7 @@ import Navbar from "./componants/Navbar";
 import AdminServices from "./componants/AdminServices";
 import AdminBarbers from "./componants/AdminBarbers";
 import AdminUsers from "./componants/AdminUsers";
-import Footer from "./componants/Footer";
+import Footer from "./componants/Footer";//typo
 
 function RequireAuth({ allowed, redirectTo = "/login", children }) {
   return allowed ? children : <Navigate to={redirectTo} replace />;
