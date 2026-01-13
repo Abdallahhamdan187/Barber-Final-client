@@ -16,7 +16,6 @@ import Footer from "./componants/Footer";
 function RequireAuth({ allowed, redirectTo = "/login", children }) {
   return allowed ? children : <Navigate to={redirectTo} replace />;
 }
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
