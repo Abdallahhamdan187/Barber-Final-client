@@ -3,7 +3,6 @@
 This is the frontend of a full-stack **Barber Shop Appointment Management System** built with **React + Vite**.
 
 ---
-
 ## 🎯 Description
 
 The app supports two types of users:
