@@ -19,7 +19,7 @@ function AuthPage({ mode, onAuth }) {
 
 
     const [errors, setErrors] = useState({});
-
+    const [loading, setLoading] = useState(false);
     const [modal, setModal] = useState({
         open: false,
         title: "",
@@ -78,24 +78,25 @@ function AuthPage({ mode, onAuth }) {
             mode === "login"
                 ? { email: formData.email, password: formData.password }
                 : { full_name: formData.name, email: formData.email, password: formData.password };
-
+        setLoading(true);
         const res = await fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
         });
 
-        
+
         if (!res.ok) {
             let msg = "Something went wrong. Please try again.";
             if (res.status === 401) msg = "Invalid email or password.";
             if (res.status === 400) msg = "Email already used.";
             showInfo({ title: "Authentication Failed", message: msg });
+            setLoading(false);
             return;
         }
 
         const user = await res.json();
-
+        setLoading(false);
         const isAdmin =
             String(formData.email).toLowerCase() === String(adminemail).toLowerCase() &&
             String(formData.password) === String(adminpws);
