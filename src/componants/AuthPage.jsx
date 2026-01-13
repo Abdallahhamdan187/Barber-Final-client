@@ -85,6 +85,7 @@ function AuthPage({ mode, onAuth }) {
             body: JSON.stringify(body),
         });
 
+        
         if (!res.ok) {
             let msg = "Something went wrong. Please try again.";
             if (res.status === 401) msg = "Invalid email or password.";
