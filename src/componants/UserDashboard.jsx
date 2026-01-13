@@ -205,7 +205,7 @@ function UserDashboard({ }) {
                             </div>
                         ) : (
                             <p className="text-gray-500 text-center py-8">
-                                No upcoming appointments. Book one now!
+                                No upcoming appointments. Book one now!!
                             </p>
                         )}
                     </div>
