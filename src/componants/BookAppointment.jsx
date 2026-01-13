@@ -10,6 +10,7 @@ const timeSlots = [
     "05:00 PM", "05:30 PM",
 ];
 
+
 function BookAppointment() {
     const navigate = useNavigate();
     const baseUrl = import.meta.env.VITE_API_URL;
