@@ -12,7 +12,7 @@ const timeSlots = [
 function BookAppointment() {
     const navigate = useNavigate();
     const baseUrl = import.meta.env.VITE_API_URL;
-    const userId = localStorage.getItem("user_id");
+    const userId = sessionStorage.getItem("user_id");
 
     const [services, setServices] = useState([]);
     const [barbers, setBarbers] = useState([]);
