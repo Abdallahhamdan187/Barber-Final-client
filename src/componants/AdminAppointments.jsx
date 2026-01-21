@@ -198,6 +198,8 @@ function AdminAppointments() {
                 return "bg-blue-100 text-blue-800 border border-blue-200";
             case "Rejected":
                 return "bg-red-100 text-red-800 border border-red-200";
+            case "Cancelled":
+                return "bg-red-100 text-red-800 border border-red-200";
             default:
                 return "bg-muted text-muted-foreground border border-border";
         }
@@ -297,6 +299,7 @@ function AdminAppointments() {
                                     <option value="Approved">Approved</option>
                                     <option value="Completed">Completed</option>
                                     <option value="Rejected">Rejected</option>
+                                    <option value="Cancelled">Cancelled</option>
                                 </select>
                             </div>
 
