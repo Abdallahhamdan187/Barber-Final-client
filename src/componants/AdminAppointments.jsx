@@ -32,6 +32,7 @@ function AdminAppointments() {
         fetch(`${baseUrl}/api/admin/appointments`, {
             headers: {
                 "x-role": sessionStorage.getItem("role"),
+
             },
         })
             .then((res) => res.json())
