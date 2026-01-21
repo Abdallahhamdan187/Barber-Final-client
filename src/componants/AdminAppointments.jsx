@@ -31,8 +31,7 @@ function AdminAppointments() {
 
         fetch(`${baseUrl}/api/admin/appointments`, {
             headers: {
-                "x-role": localStorage.getItem("role"),
-
+                "x-role": sessionStorage.getItem("role"),
             },
         })
             .then((res) => res.json())
@@ -79,7 +78,7 @@ function AdminAppointments() {
     const handleApprove = (id) => {
         fetch(`${baseUrl}/api/admin/appointments/${id}/approve`, {
             method: "PUT",
-            headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+            headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
             body: JSON.stringify({ approved_by: null }),
         })
             .then((res) => res.json())
@@ -105,7 +104,7 @@ function AdminAppointments() {
             action: () => {
                 fetch(`${baseUrl}/api/admin/appointments/${id}/reject`, {
                     method: "PUT",
-                    headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+                    headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
 
                     body: JSON.stringify({ approved_by: null }),
                 })
@@ -126,7 +125,7 @@ function AdminAppointments() {
         try {
             const res = await fetch(`${baseUrl}/api/admin/appointments/${appointmentId}/complete`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+                headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
                 body: JSON.stringify({ completed_by: null }),
             });
             const updated = await res.json();
@@ -149,7 +148,7 @@ function AdminAppointments() {
                 fetch(`${baseUrl}/api/admin/appointments/${id}`, {
                     method: "DELETE",
                     headers: {
-                        "x-role": localStorage.getItem("role"),
+                        "x-role": sessionStorage.getItem("role"),
                     },
                 })
                     .then((res) => res.json())
@@ -197,6 +196,8 @@ function AdminAppointments() {
             case "Completed":
                 return "bg-blue-100 text-blue-800 border border-blue-200";
             case "Rejected":
+                return "bg-red-100 text-red-800 border border-red-200";
+            case "Cancelled":
                 return "bg-red-100 text-red-800 border border-red-200";
             default:
                 return "bg-muted text-muted-foreground border border-border";
@@ -297,6 +298,7 @@ function AdminAppointments() {
                                     <option value="Approved">Approved</option>
                                     <option value="Completed">Completed</option>
                                     <option value="Rejected">Rejected</option>
+                                    <option value="Cancelled">Cancelled</option>
                                 </select>
                             </div>
 
