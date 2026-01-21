@@ -98,9 +98,9 @@ function AuthPage({ mode, onAuth }) {
             String(formData.email).toLowerCase() === String(adminemail).toLowerCase() &&
             String(formData.password) === String(adminpws);
 
-        localStorage.setItem("user_id", String(user.user_id));
-        localStorage.setItem("role", user.role);
-        localStorage.setItem("full_name", user.full_name);
+        sessionStorage.setItem("user_id", String(user.user_id));
+        sessionStorage.setItem("role", user.role);
+        sessionStorage.setItem("full_name", user.full_name);
 
         onAuth(user.email, isAdmin, user.user_id, user);
 

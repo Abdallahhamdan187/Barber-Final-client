@@ -7,7 +7,7 @@ const normalizeDate = (d) => (d ? String(d).split("T")[0] : "");
 function UserAppointments() {
     const [appointments, setAppointments] = useState([]);
     const [selectedAppointment, setSelectedAppointment] = useState(null);
-    const userId = localStorage.getItem("user_id")
+    const userId = sessionStorage.getItem("user_id")
 
     const baseUrl = import.meta.env.VITE_API_URL;
     const [modal, setModal] = useState({
