@@ -49,7 +49,7 @@ All data is handled through a backend API and persisted in a **PostgreSQL** data
 - React Router
 - Fetch API
 - Tailwind CSS
-- LocalStorage (session persistence)
+- sessionStorage (session persistence)
 
 ---
 
