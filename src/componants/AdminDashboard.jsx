@@ -38,7 +38,7 @@ function AdminDashboard() {
 
         fetch(`${baseUrl}/api/admin/dashboard/stats`, {
             headers: {
-                "x-role": localStorage.getItem("role"),
+                "x-role": sessionStorage.getItem("role"),
             },
         })
             .then((res) => res.json())
@@ -54,7 +54,7 @@ function AdminDashboard() {
         // all appointments (compute everything from here)
         fetch(`${baseUrl}/api/admin/appointments`, {
             headers: {
-                "x-role": localStorage.getItem("role"),
+                "x-role": sessionStorage.getItem("role"),
             },
         })
             .then((res) => res.json())

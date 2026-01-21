@@ -73,7 +73,7 @@ function AdminServices() {
 
         fetch(`${baseUrl}/api/admin/services`, {
             headers: {
-                "x-role": localStorage.getItem("role"),
+                "x-role": sessionStorage.getItem("role"),
 
             },
         })
@@ -106,7 +106,7 @@ function AdminServices() {
                 fetch(`${baseUrl}/api/admin/services/${serviceId}`, {
                     method: "DELETE",
                     headers: {
-                        "x-role": localStorage.getItem("role"),
+                        "x-role": sessionStorage.getItem("role"),
                     },
                 })
                     .then((res) => res.json())
@@ -153,7 +153,7 @@ function AdminServices() {
         if (isEditing) {
             fetch(`${baseUrl}/api/admin/services/${editingId}`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+                headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
                 body: JSON.stringify({
                     name: cleanName,
                     description: cleanDesc || null,

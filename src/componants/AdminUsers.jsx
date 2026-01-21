@@ -66,7 +66,7 @@ function AdminUsers() {
         try {
             fetch(`${baseUrl}/api/admin/users`, {
                 headers: {
-                    "x-role": localStorage.getItem("role"),
+                    "x-role": sessionStorage.getItem("role"),
                 },
             })
                 .then((res) => res.json())
@@ -128,7 +128,7 @@ function AdminUsers() {
                     fetch(`${baseUrl}/api/admin/users/${id}`, {
                         method: "DELETE",
                         headers: {
-                            "x-role": localStorage.getItem("role"),
+                            "x-role": sessionStorage.getItem("role"),
                         },
                     })
                         .then((res) => {

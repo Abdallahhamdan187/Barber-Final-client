@@ -77,7 +77,7 @@ function AdminBarbers() {
 
         fetch(`${baseUrl}/api/admin/barbers`, {
             headers: {
-                "x-role": localStorage.getItem("role"),
+                "x-role": sessionStorage.getItem("role"),
             },
         })
             .then(async (res) => {
@@ -122,7 +122,7 @@ function AdminBarbers() {
                 fetch(`${baseUrl}/api/admin/barbers/${barberId}`, {
                     method: "DELETE",
                     headers: {
-                        "x-role": localStorage.getItem("role"),
+                        "x-role": sessionStorage.getItem("role"),
                     },
                 })
                     .then(async (res) => {
@@ -170,7 +170,7 @@ function AdminBarbers() {
 
             fetch(`${baseUrl}/api/admin/barbers/${editingId}`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+                headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
                 body: JSON.stringify({
                     name,
                     specialization: spec,
@@ -202,7 +202,7 @@ function AdminBarbers() {
         // CREATE
         fetch(`${baseUrl}/api/admin/barbers`, {
             method: "POST",
-            headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+            headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
             body: JSON.stringify({
                 name,
                 specialization: spec,
