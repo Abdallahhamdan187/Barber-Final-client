@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AdminAppointments from "./componants/AdminAppointments";
 import AdminDashboard from "./componants/AdminDashboard";
@@ -13,8 +13,17 @@ import AdminBarbers from "./componants/AdminBarbers";
 import AdminUsers from "./componants/AdminUsers";
 import Footer from "./componants/Footer";//typo
 
-function RequireAuth({ allowed, redirectTo = "/login", children }) {
-  return allowed ? children : <Navigate to={redirectTo} replace />;
+function RequireAuth({ allowRole, redirectTo = "/login", children }) {
+  const userId = sessionStorage.getItem("user_id");
+  const role = (sessionStorage.getItem("role") || "").toLowerCase();
+
+  if (!userId) return <Navigate to={redirectTo} replace />;
+
+  if (allowRole && role !== allowRole) {
+    return <Navigate to={role === "admin" ? "/admin" : "/dashboard"} replace />;
+  }
+
+  return children;
 }
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,6 +31,17 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const userId = sessionStorage.getItem("user_id");
+    const role = (sessionStorage.getItem("role") || "").toLowerCase();
+    const email = sessionStorage.getItem("email") || "";
+
+    if (userId) {
+      setIsAuthenticated(true);
+      setIsAdmin(role === "admin");
+      setUserEmail(email);
+    }
+  }, []);
   const userName = useMemo(() => {
     if (!userEmail) return "User";
     return userEmail.split("@")[0];
@@ -37,6 +57,10 @@ function App() {
     setIsAuthenticated(false);
     setIsAdmin(false);
     setUserEmail("");
+    sessionStorage.removeItem("user_id");
+    sessionStorage.removeItem("role");
+    sessionStorage.removeItem("full_name");
+    sessionStorage.removeItem("email");
   };
 
   return (
@@ -67,11 +91,10 @@ function App() {
             )
           }
         />
-
         <Route
           path="/dashboard"
           element={
-            <RequireAuth allowed={isAuthenticated && !isAdmin}>
+            <RequireAuth allowRole="user">
               <UserDashboard userName={userName} />
             </RequireAuth>
           }
@@ -80,7 +103,7 @@ function App() {
         <Route
           path="/book"
           element={
-            <RequireAuth allowed={isAuthenticated && !isAdmin}>
+            <RequireAuth allowRole="user">
               <BookAppointment />
             </RequireAuth>
           }
@@ -89,17 +112,16 @@ function App() {
         <Route
           path="/appointments"
           element={
-            <RequireAuth allowed={isAuthenticated && !isAdmin}>
+            <RequireAuth allowRole="user">
               <UserAppointments />
             </RequireAuth>
           }
         />
 
-
         <Route
           path="/admin"
           element={
-            <RequireAuth allowed={isAuthenticated && isAdmin}>
+            <RequireAuth allowRole="admin">
               <AdminDashboard />
             </RequireAuth>
           }
@@ -108,7 +130,7 @@ function App() {
         <Route
           path="/admin/appointments"
           element={
-            <RequireAuth allowed={isAuthenticated && isAdmin}>
+            <RequireAuth allowRole="admin">
               <AdminAppointments />
             </RequireAuth>
           }
@@ -116,7 +138,7 @@ function App() {
         <Route
           path="/admin/services"
           element={
-            <RequireAuth allowed={isAuthenticated && isAdmin}>
+            <RequireAuth allowRole="admin">
               <AdminServices />
             </RequireAuth>
           }
@@ -124,7 +146,7 @@ function App() {
         <Route
           path="/admin/barbers"
           element={
-            <RequireAuth allowed={isAuthenticated && isAdmin}>
+            <RequireAuth allowRole="admin">
               <AdminBarbers />
             </RequireAuth>
           }
@@ -132,7 +154,7 @@ function App() {
         <Route
           path="/admin/users"
           element={
-            <RequireAuth allowed={isAuthenticated && isAdmin}>
+            <RequireAuth allowRole="admin">
               <AdminUsers />
             </RequireAuth>
           }

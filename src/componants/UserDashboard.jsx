@@ -7,8 +7,8 @@ import ActionModal from "./ActionModal";
 const normalizeDate = (d) => (d ? String(d).split("T")[0] : "");
 function UserDashboard({ }) {
     const [appointments, setAppointments] = useState([]);
-    const userId = localStorage.getItem("user_id")
-    const username = localStorage.getItem("full_name")
+    const userId = sessionStorage.getItem("user_id")
+    const username = sessionStorage.getItem("full_name")
     const [modal, setModal] = useState({
         open: false,
         title: "",
