@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AdminAppointments from "./componants/AdminAppointments";
 import AdminDashboard from "./componants/AdminDashboard";
@@ -11,7 +11,7 @@ import Navbar from "./componants/Navbar";
 import AdminServices from "./componants/AdminServices";
 import AdminBarbers from "./componants/AdminBarbers";
 import AdminUsers from "./componants/AdminUsers";
-import Footer from "./componants/Footer";
+import Footer from "./componants/Footer";//typo
 
 function RequireAuth({ allowRole, redirectTo = "/login", children }) {
   const userId = sessionStorage.getItem("user_id");
@@ -25,7 +25,6 @@ function RequireAuth({ allowRole, redirectTo = "/login", children }) {
 
   return children;
 }
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -43,10 +42,9 @@ function App() {
       setUserEmail(email);
     }
   }, []);
-  const userName = useMemo(() => {
-    if (!userEmail) return "User";
-    return userEmail.split("@")[0];
-  }, [userEmail]);
+  const userName = userEmail
+    ? userEmail.split("@")[0]
+    : "User";
 
   const login = (email, admin) => {
     setIsAuthenticated(true);

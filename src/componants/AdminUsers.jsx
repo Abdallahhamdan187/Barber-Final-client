@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";//-=-------------------------->
+import { useEffect, useState } from "react";//-=-------------------------->
 import { Link } from "react-router-dom";
 import ActionModal from "./ActionModal";
 import { Calendar, Users, Scissors, TrendingUp, Search, Trash2 } from "lucide-react";
@@ -66,7 +66,7 @@ function AdminUsers() {
         try {
             fetch(`${baseUrl}/api/admin/users`, {
                 headers: {
-                    "x-role": localStorage.getItem("role"),
+                    "x-role": sessionStorage.getItem("role"),
                 },
             })
                 .then((res) => res.json())
@@ -91,20 +91,18 @@ function AdminUsers() {
         setRoleFilter("All");
     };
 
-    const filteredUsers = useMemo(() => {//--------------------------->
-        const term = searchTerm.trim().toLowerCase();
+    const term = searchTerm.trim().toLowerCase();
 
-        return usersList.filter((u) => {
-            const name = String(u.full_name ?? u.name ?? "").toLowerCase();
-            const email = String(u.email ?? "").toLowerCase();
-            const role = String(u.role ?? "");
+    const filteredUsers = usersList.filter((u) => {
+        const name = String(u.full_name ?? u.name ?? "").toLowerCase();
+        const email = String(u.email ?? "").toLowerCase();
+        const role = String(u.role ?? "");
 
-            const matchesSearch = !term || name.includes(term) || email.includes(term);
-            const matchesRole = roleFilter === "All" || role === roleFilter;
+        const matchesSearch = !term || name.includes(term) || email.includes(term);
+        const matchesRole = roleFilter === "All" || role === roleFilter;
 
-            return matchesSearch && matchesRole;
-        });
-    }, [usersList, searchTerm, roleFilter]);
+        return matchesSearch && matchesRole;
+    });
 
     const getUserId = (u) => u.user_id ?? u.id;
 
@@ -128,7 +126,7 @@ function AdminUsers() {
                     fetch(`${baseUrl}/api/admin/users/${id}`, {
                         method: "DELETE",
                         headers: {
-                            "x-role": localStorage.getItem("role"),
+                            "x-role": sessionStorage.getItem("role"),
                         },
                     })
                         .then((res) => {
