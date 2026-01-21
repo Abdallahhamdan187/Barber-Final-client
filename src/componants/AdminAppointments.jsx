@@ -31,7 +31,7 @@ function AdminAppointments() {
 
         fetch(`${baseUrl}/api/admin/appointments`, {
             headers: {
-                "x-role": localStorage.getItem("role"),
+                "x-role": sessionStorage.getItem("role"),
 
             },
         })
@@ -79,7 +79,7 @@ function AdminAppointments() {
     const handleApprove = (id) => {
         fetch(`${baseUrl}/api/admin/appointments/${id}/approve`, {
             method: "PUT",
-            headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+            headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
             body: JSON.stringify({ approved_by: null }),
         })
             .then((res) => res.json())
@@ -105,7 +105,7 @@ function AdminAppointments() {
             action: () => {
                 fetch(`${baseUrl}/api/admin/appointments/${id}/reject`, {
                     method: "PUT",
-                    headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+                    headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
 
                     body: JSON.stringify({ approved_by: null }),
                 })
@@ -126,7 +126,7 @@ function AdminAppointments() {
         try {
             const res = await fetch(`${baseUrl}/api/admin/appointments/${appointmentId}/complete`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json", "x-role": localStorage.getItem("role") },
+                headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
                 body: JSON.stringify({ completed_by: null }),
             });
             const updated = await res.json();
@@ -149,7 +149,7 @@ function AdminAppointments() {
                 fetch(`${baseUrl}/api/admin/appointments/${id}`, {
                     method: "DELETE",
                     headers: {
-                        "x-role": localStorage.getItem("role"),
+                        "x-role": sessionStorage.getItem("role"),
                     },
                 })
                     .then((res) => res.json())
