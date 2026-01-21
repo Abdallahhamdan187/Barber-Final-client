@@ -55,6 +55,7 @@ All data is handled through a backend API and persisted in a **PostgreSQL** data
 
 ## 🚀 Getting Started
 
+
 ```bash
 cd final-barber-client
 npm install
