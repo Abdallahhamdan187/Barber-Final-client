@@ -104,7 +104,7 @@ function AuthPage({ mode, onAuth }) {
         sessionStorage.setItem("user_id", String(user.user_id));
         sessionStorage.setItem("role", user.role);
         sessionStorage.setItem("full_name", user.full_name);
-
+        sessionStorage.setItem("email", user.email);
         onAuth(user.email, isAdmin, user.user_id, user);
 
         navigate(isAdmin ? "/admin" : "/dashboard");
