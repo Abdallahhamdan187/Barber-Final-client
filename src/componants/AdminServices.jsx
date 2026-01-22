@@ -191,7 +191,6 @@ function AdminServices() {
         })
             .then((res) => res.json())
             .then((created) => {
-                // put newest on top (your API orders DESC, this matches that feel)
                 setServices((prev) => [created, ...prev]);
                 showInfo({ title: "Added", message: "Service added successfully." });
                 resetForm();
