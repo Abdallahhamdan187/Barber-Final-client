@@ -181,7 +181,7 @@ function AdminServices() {
         // CREATE
         fetch(`${baseUrl}/api/admin/services`, {
             method: "POST",
-            headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role") },
+            headers: { "Content-Type": "application/json", "x-role": sessionStorage.getItem("role"), },
             body: JSON.stringify({
                 name: cleanName,
                 description: cleanDesc || null,
